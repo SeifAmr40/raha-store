@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raha Egypt – راحة مصر | Customized Furniture</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1B4FA8;
+    --blue-dark: #0e2f6e;
+    --gold: #c8a96e;
+    --cream: #f9f6f0;
+    --white: #ffffff;
+    --text: #1a1a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 60px; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(27,79,168,0.1); transition: box-shadow 0.3s; }
+  nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--blue); }
+  .nav-brand em { font-style: italic; color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta { background: var(--blue); color: #fff !important; padding: 10px 24px; border-radius: 2px; }
+  .nav-cta:hover { background: var(--blue-dark) !important; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 88px; }
+  .hero-left { background: var(--cream); display: flex; flex-direction: column; justify-content: center; padding: 80px 70px; position: relative; overflow: hidden; }
+  .hero-left::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border: 60px solid rgba(27,79,168,0.06); border-radius: 50%; }
+  .hero-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; line-height: 1.05; margin-bottom: 10px; }
+  .hero-title em { font-style: italic; color: var(--blue); }
+  .hero-arabic { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--blue); margin-bottom: 28px; direction: rtl; }
+  .hero-tagline { font-size: 13px; font-weight: 300; color: #555; line-height: 1.8; max-width: 360px; margin-bottom: 44px; border-left: 2px solid var(--gold); padding-left: 18px; }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-wa { background: #25D366; color: #fff; text-decoration: none; padding: 14px 28px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; transition: background 0.25s, transform 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-wa:hover { background: #1da851; transform: translateY(-1px); }
+  .btn-wa svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+  .btn-outline { border: 1.5px solid var(--blue); color: var(--blue); text-decoration: none; padding: 14px 28px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; transition: all 0.25s; display: inline-block; }
+  .btn-outline:hover { background: var(--blue); color: #fff; }
+
+  .hero-right { background: var(--blue); display: flex; align-items: stretch; justify-content: stretch; position: relative; overflow: hidden; }
+  .hero-img-collage { width: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; }
+  .hero-img-collage img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; transition: opacity 0.35s; display: block; }
+  .hero-img-collage img:hover { opacity: 1; }
+  .hero-img-collage .span2 { grid-column: 1 / 2; grid-row: 1 / 3; }
+
+  /* MARQUEE */
+  .marquee-strip { background: var(--blue-dark); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+  .marquee-inner { display: inline-block; animation: marquee 24s linear infinite; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-dot { margin: 0 22px; color: var(--gold); }
+
+  /* SECTION */
+  .section { padding: 100px 80px; }
+  .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; line-height: 1.15; margin-bottom: 20px; }
+  .section-title em { font-style: italic; color: var(--blue); }
+  .section-sub { font-size: 13px; color: #666; line-height: 1.9; max-width: 520px; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+  .about-img-wrap { position: relative; }
+  .about-img-main { width: 100%; height: 440px; object-fit: cover; border-radius: 2px; }
+  .about-img-accent { position: absolute; bottom: -28px; right: -28px; width: 45%; height: 200px; object-fit: cover; border: 5px solid #fff; border-radius: 2px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+  .about-gold-bar { position: absolute; top: 40px; left: -10px; width: 4px; height: 120px; background: var(--gold); }
+  .value-list { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .value-item { display: flex; gap: 18px; align-items: flex-start; }
+  .value-icon { width: 38px; height: 38px; background: var(--blue); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .value-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .value-item h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .value-item p { font-size: 12px; color: #666; line-height: 1.7; }
+
+  /* GALLERY */
+  .gallery { background: var(--cream); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 60px; }
+  .gallery-card { background: #fff; border-radius: 3px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+  .gallery-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(27,79,168,0.13); }
+  .gallery-card img { width: 100%; height: 230px; object-fit: cover; display: block; }
+  .gallery-card-body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .gallery-card-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+  .gallery-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+  .gallery-card-desc { font-size: 12px; color: #666; line-height: 1.7; flex: 1; margin-bottom: 18px; }
+  .btn-order-wa { display: flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; text-decoration: none; padding: 12px 0; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; transition: background 0.2s; width: 100%; }
+  .btn-order-wa:hover { background: #1da851; }
+  .btn-order-wa svg { width: 15px; height: 15px; fill: #fff; flex-shrink: 0; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; background: rgba(27,79,168,0.07); }
+  .service-card { background: var(--white); padding: 40px 32px; position: relative; overflow: hidden; transition: background 0.3s; cursor: default; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--blue); transition: width 0.4s; }
+  .service-card:hover::after { width: 100%; }
+  .service-card:hover { background: var(--blue); color: #fff; }
+  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; color: rgba(27,79,168,0.07); font-weight: 600; line-height: 1; transition: color 0.3s; }
+  .service-card:hover .service-num { color: rgba(255,255,255,0.1); }
+  .service-icon { font-size: 26px; margin: 10px 0 12px; }
+  .service-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .service-card p { font-size: 12px; line-height: 1.8; color: #666; transition: color 0.3s; }
+  .service-card:hover p { color: rgba(255,255,255,0.8); }
+
+  /* BRANCH */
+  .branches { background: var(--cream); }
+  .branch-solo { margin-top: 60px; max-width: 580px; border: 1px solid rgba(27,79,168,0.15); border-radius: 3px; padding: 52px 48px; position: relative; overflow: hidden; box-shadow: 0 8px 32px rgba(27,79,168,0.07); }
+  .branch-badge { display: inline-block; background: var(--blue); color: #fff; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; border-radius: 1px; margin-bottom: 24px; }
+  .branch-solo h3 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; margin-bottom: 6px; }
+  .branch-arabic { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--blue); margin-bottom: 22px; direction: rtl; }
+  .branch-detail { display: flex; align-items: center; gap: 10px; font-size: 12px; color: #555; margin-bottom: 10px; }
+  .branch-detail svg { width: 15px; height: 15px; flex-shrink: 0; fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .branch-deco { position: absolute; bottom: -30px; right: -30px; width: 140px; height: 140px; border: 40px solid rgba(27,79,168,0.06); border-radius: 50%; }
+
+  /* CONTACT */
+  .contact { background: var(--blue); color: #fff; }
+  .contact .section-title { color: #fff; }
+  .contact .section-title em { color: var(--gold); }
+  .contact .section-label { color: var(--gold); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .contact-item { display: flex; align-items: center; gap: 20px; padding: 20px 24px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; text-decoration: none; color: inherit; transition: background 0.3s; }
+  .contact-item:hover { background: rgba(255,255,255,0.13); }
+  .contact-item-icon { width: 42px; height: 42px; background: var(--gold); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-item-icon svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-item-icon.green { background: #25D366; }
+  .contact-item-icon.green svg { fill: #fff; stroke: none; }
+  .contact-item-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
+  .contact-item-val { font-size: 14px; font-weight: 500; }
+  .contact-item-val.green-text { color: #4ddd80; }
+  .contact-form-wrap { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; padding: 44px; }
+  .contact-form-wrap h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; margin-bottom: 26px; }
+  .form-row { margin-bottom: 15px; }
+  .form-row label { display: block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 7px; }
+  .form-row input, .form-row textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 11px 14px; font-size: 13px; border-radius: 2px; font-family: 'Montserrat', sans-serif; outline: none; transition: border-color 0.2s; }
+  .form-row input::placeholder, .form-row textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-row input:focus, .form-row textarea:focus { border-color: var(--gold); }
+  .form-row textarea { height: 90px; resize: none; }
+  .form-submit { width: 100%; padding: 14px; background: #25D366; color: #fff; border: none; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: background 0.25s; margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .form-submit:hover { background: #1da851; }
+  .form-submit svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+
+  /* FOOTER */
+  footer { background: var(--blue-dark); color: rgba(255,255,255,0.55); padding: 34px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: rgba(255,255,255,0.8); }
+  .footer-brand em { font-style: italic; color: var(--gold); }
+  footer p { font-size: 11px; }
+  .footer-links { display: flex; gap: 22px; }
+  .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* FLOATING WA */
+  .wa-float { position: fixed; bottom: 30px; right: 30px; z-index: 200; width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.45); transition: transform 0.2s; text-decoration: none; }
+  .wa-float:hover { transform: scale(1.1); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in.d1 { transition-delay: 0.15s; }
+  .fade-in.d2 { transition-delay: 0.3s; }
+  .fade-in.d3 { transition-delay: 0.45s; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 280px; }
+    .hero-title { font-size: 50px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 14px 22px; }
+    .nav-links { display: none; }
+    .section { padding: 60px 24px; }
+    footer { flex-direction: column; text-align: center; padding: 28px 24px; }
+    .hero-left { padding: 52px 28px; }
+    .about-img-accent { display: none; }
+  }
+  @media (max-width: 580px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-brand">Raha <em>Egypt</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#branches">Branch</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Est. Cairo, Egypt</p>
+    <h1 class="hero-title"><em>Raha</em><br>Egypt</h1>
+    <p class="hero-arabic">راحة مصر</p>
+    <p class="hero-tagline">Quality customized furniture &amp; beyond — Your comfort is guaranteed</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/201020759995?text=مرحبا%20Raha%20Egypt!%20أريد%20الاستفسار%20عن%20أثاث%20مخصص" target="_blank" class="btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Order via WhatsApp
+      </a>
+      <a href="#gallery" class="btn-outline">View Gallery</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-collage">
+      <img class="span2" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Luxury sofa">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80" alt="Bedroom">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Kitchen">
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    Custom Furniture <span class="marquee-dot">◆</span> Living Rooms <span class="marquee-dot">◆</span> Bedrooms <span class="marquee-dot">◆</span> Kitchens <span class="marquee-dot">◆</span> Offices <span class="marquee-dot">◆</span> Golf City Mall — العبور <span class="marquee-dot">◆</span> راحة مصر <span class="marquee-dot">◆</span> Custom Furniture <span class="marquee-dot">◆</span> Living Rooms <span class="marquee-dot">◆</span> Bedrooms <span class="marquee-dot">◆</span> Kitchens <span class="marquee-dot">◆</span> Offices <span class="marquee-dot">◆</span> Golf City Mall — العبور <span class="marquee-dot">◆</span> راحة مصر <span class="marquee-dot">◆</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <p class="section-label fade-in">Who We Are</p>
+  <h2 class="section-title fade-in d1">Crafting spaces<br>that feel like <em>home</em></h2>
+  <div class="about-grid">
+    <div class="about-img-wrap fade-in">
+      <div class="about-gold-bar"></div>
+      <img class="about-img-main" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="Beautiful living room interior">
+      <img class="about-img-accent" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=400&q=80" alt="Bedroom detail">
+    </div>
+    <div class="about-text fade-in d1">
+      <p class="section-sub">At Raha Egypt, we believe your home should be a true reflection of you. Every piece we create is designed and crafted to your exact specifications — from living rooms to bedrooms, kitchens, and offices.</p>
+      <div class="value-list">
+        <div class="value-item">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><polyline points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+          <div><h4>100% Customized</h4><p>Every item is made to order — dimensions, materials, finishes, and style all tailored to your vision.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Premium Quality</h4><p>High-grade materials and finishes — every piece is built to stand the test of time.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div><h4>Your Comfort, Guaranteed</h4><p>From design consultation to installation — a seamless experience and complete satisfaction.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+  <p class="section-label fade-in">Our Work</p>
+  <h2 class="section-title fade-in d1">Pieces crafted<br>with <em>passion</em></h2>
+  <p class="section-sub fade-in d2">Every item is built to order. See something you love? Tap "Order via WhatsApp" and we'll make it yours.</p>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-card fade-in">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Luxury Corner Sofa">
+      <div class="gallery-card-body">
+        <div class="gallery-card-cat">Living Room</div>
+        <div class="gallery-card-title">Luxury Corner Sofa</div>
+        <div class="gallery-card-desc">Fully customized in your choice of fabric, color, and dimensions. Built for comfort and elegance.</div>
+        <a href="https://wa.me/201020759995?text=مرحبا!%20أريد%20طلب%20كنبة%20ركنية%20مخصصة%20من%20Raha%20Egypt" target="_blank" class="btn-order-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-card fade-in d1">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80" alt="Modern Bedroom Set">
+      <div class="gallery-card-body">
+        <div class="gallery-card-cat">Bedroom</div>
+        <div class="gallery-card-title">Modern Bedroom Set</div>
+        <div class="gallery-card-desc">Complete bedroom suite with bed frame, wardrobe, and nightstands in your preferred finish.</div>
+        <a href="https://wa.me/201020759995?text=مرحبا!%20أريد%20طلب%20غرفة%20نوم%20مخصصة%20من%20Raha%20Egypt" target="_blank" class="btn-order-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-card fade-in d2">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Custom Kitchen">
+      <div class="gallery-card-body">
+        <div class="gallery-card-cat">Kitchen</div>
+        <div class="gallery-card-title">Custom Kitchen Cabinets</div>
+        <div class="gallery-card-desc">Modern or classic style, with durable finishes and smart storage solutions for your space.</div>
+        <a href="https://wa.me/201020759995?text=مرحبا!%20أريد%20طلب%20مطبخ%20مخصص%20من%20Raha%20Egypt" target="_blank" class="btn-order-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-card fade-in">
+      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" alt="Office Setup">
+      <div class="gallery-card-body">
+        <div class="gallery-card-cat">Office</div>
+        <div class="gallery-card-title">Executive Office Setup</div>
+        <div class="gallery-card-desc">Custom desks, shelving, and storage tailored for productivity and a professional look.</div>
+        <a href="https://wa.me/201020759995?text=مرحبا!%20أريد%20طلب%20أثاث%20مكتبي%20مخصص%20من%20Raha%20Egypt" target="_blank" class="btn-order-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-card fade-in d1">
+      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80" alt="TV Entertainment Unit">
+      <div class="gallery-card-body">
+        <div class="gallery-card-cat">Living Room</div>
+        <div class="gallery-card-title">Entertainment & TV Unit</div>
+        <div class="gallery-card-desc">Floor-to-ceiling custom units with hidden storage, display shelves, and built-in lighting.</div>
+        <a href="https://wa.me/201020759995?text=مرحبا!%20أريد%20طلب%20وحدة%20تلفزيون%20مخصصة%20من%20Raha%20Egypt" target="_blank" class="btn-order-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-card fade-in d2">
+      <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80" alt="Built-in Wardrobe">
+      <div class="gallery-card-body">
+        <div class="gallery-card-cat">Bedroom</div>
+        <div class="gallery-card-title">Built-in Wardrobe</div>
+        <div class="gallery-card-desc">Maximise every centimetre — sliding doors, mirrors, and internal organizers all to spec.</div>
+        <a href="https://wa.me/201020759995?text=مرحبا!%20أريد%20طلب%20دولاب%20مدمج%20مخصص%20من%20Raha%20Egypt" target="_blank" class="btn-order-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <p class="section-label fade-in">What We Do</p>
+  <h2 class="section-title fade-in d1">Furniture for<br>every <em>space</em></h2>
+  <div class="services-grid">
+    <div class="service-card fade-in"><div class="service-num">01</div><div class="service-icon">🛋️</div><h3>Living Rooms</h3><p>Custom sofas, entertainment units, and accent furniture built to your layout and style.</p></div>
+    <div class="service-card fade-in d1"><div class="service-num">02</div><div class="service-icon">🛏️</div><h3>Bedrooms</h3><p>Bespoke beds, wardrobes, and dressers designed for maximum comfort and elegance.</p></div>
+    <div class="service-card fade-in d2"><div class="service-num">03</div><div class="service-icon">🍳</div><h3>Kitchens</h3><p>Custom cabinets and countertops optimized for your cooking space and lifestyle.</p></div>
+    <div class="service-card fade-in"><div class="service-num">04</div><div class="service-icon">💼</div><h3>Offices</h3><p>Professional workspaces with custom desks and storage that boost productivity.</p></div>
+    <div class="service-card fade-in d1"><div class="service-num">05</div><div class="service-icon">🚪</div><h3>Doors & Partitions</h3><p>Elegant custom doors and decorative panels that define your space beautifully.</p></div>
+    <div class="service-card fade-in d2"><div class="service-num">06</div><div class="service-icon">✨</div><h3>Full Interiors</h3><p>Complete turnkey solutions from concept to the very last finishing touch.</p></div>
+  </div>
+</section>
+
+<!-- BRANCH -->
+<section class="section branches" id="branches">
+  <p class="section-label fade-in">Find Us</p>
+  <h2 class="section-title fade-in d1">Visit our<br><em>showroom</em></h2>
+  <p class="section-sub fade-in d2">Come experience our craftsmanship firsthand. Our consultants are ready to bring your vision to life.</p>
+  <div class="branch-solo fade-in d1">
+    <span class="branch-badge">Our Branch</span>
+    <h3>Al-Obour City</h3>
+    <p class="branch-arabic">العبور</p>
+    <div class="branch-detail">
+      <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+      Golf City Mall, Al-Obour City, Cairo
+    </div>
+    <div class="branch-detail">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.36 1.18 2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.37a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      010 2075 9995
+    </div>
+    <div class="branch-deco"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Let's build your<br>dream <em>space</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <a href="tel:01020759995" class="contact-item">
+        <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.36 1.18 2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.37a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="contact-item-label">Phone</div><div class="contact-item-val">010 2075 9995</div></div>
+      </a>
+      <a href="mailto:rahaegyptofficial@gmail.com" class="contact-item">
+        <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-item-label">Email</div><div class="contact-item-val">rahaegyptofficial@gmail.com</div></div>
+      </a>
+      <div class="contact-item" style="cursor:default;">
+        <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div>
+        <div><div class="contact-item-label">Branch</div><div class="contact-item-val">Golf City Mall, Al-Obour City, Cairo</div></div>
+      </div>
+      <a href="https://wa.me/201020759995?text=مرحبا%20Raha%20Egypt!%20أريد%20الطلب%20عبر%20واتساب" target="_blank" class="contact-item" style="background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.35);">
+        <div class="contact-item-icon green">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        </div>
+        <div><div class="contact-item-label">Quick Order</div><div class="contact-item-val green-text">Order via WhatsApp →</div></div>
+      </a>
+    </div>
+
+    <div class="contact-form-wrap">
+      <h3>Send us a message</h3>
+      <div class="form-row"><label>Your Name</label><input type="text" placeholder="Seif Aldin" id="f-name"></div>
+      <div class="form-row"><label>Phone Number</label><input type="tel" placeholder="01X XXXX XXXX" id="f-phone"></div>
+      <div class="form-row"><label>What are you looking for?</label><textarea placeholder="Describe your project — bedroom, kitchen, sofa..." id="f-msg"></textarea></div>
+      <button class="form-submit" onclick="handleSubmit()">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Send via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Raha <em>Egypt</em> — راحة مصر</div>
+  <p>© 2025 Raha Egypt. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- FLOATING WA BTN -->
+<a href="https://wa.me/201020759995" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.094.541 4.062 1.487 5.773L.057 23.491l5.886-1.417A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.37l-.36-.213-3.494.841.878-3.395-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  function handleSubmit() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const msg = document.getElementById('f-msg').value.trim();
+    if (!name || !phone || !msg) { alert('Please fill in all fields.'); return; }
+    const text = encodeURIComponent(`مرحبا Raha Egypt!\nاسمي: ${name}\nرقمي: ${phone}\nأريد: ${msg}`);
+    window.open(`https://wa.me/201020759995?text=${text}`, '_blank');
+  }
+</script>
+</body>
+</html>
